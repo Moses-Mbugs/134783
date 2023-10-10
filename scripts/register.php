@@ -1,7 +1,6 @@
+
 <?php
-// registration script
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection parameters
     $host = "localhost";
     $username = "root";
     $password = "";
@@ -15,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Retrieve user input from the form
+    // Retrieve user input from the form (with validation)
     $first_name = $_POST["first_name"];
     $last_name = $_POST["last_name"];
     $email = $_POST["email"];
@@ -23,19 +22,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profession = $_POST["profession"];
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash the password
 
-    // Insert user details database
-    $sql = "INSERT INTO users (first_name, last_name, email, experience, profession, password) 
-            VALUES ('$first_name', '$last_name', '$email', '$experience', '$profession', '$password')";
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Invalid email format.";
+        exit();
+    }
 
-    if ($conn->query($sql) === TRUE) {
-        // Registration successful, redirect to main page or login page
-        header("Location: main_page.php");
+    // Insert user details into the database
+    $sql = "INSERT INTO users (first_name, last_name, email, experience, profession, password) 
+            VALUES (?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssss", $first_name, $last_name, $email, $experience, $profession, $password);
+
+    if ($stmt->execute()) {
+        // Registration successful, redirect to a success or login page
+        header("Location: ../views/login.html");
         exit();
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt->error;
     }
 
     // Close the database connection
+    $stmt->close();
     $conn->close();
 }
-?>
+?> 

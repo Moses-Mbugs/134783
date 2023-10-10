@@ -15,6 +15,7 @@ body
   min-height: 100vh;
   background: #000;
 }
+/* the many tiny boxes */
 section 
 {
   position: absolute;
@@ -76,6 +77,7 @@ section .signin
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(0,0,0,9);
 }
+/* the distance between the heading and the forms */
 section .signin .content 
 {
   position: relative;
@@ -84,26 +86,29 @@ section .signin .content
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 40px;
+  gap: 15px;
 }
+/* the heading for REGISTER */
 section .signin .content h2 
 {
   font-size: 2em;
   color: #ED7014;
   text-transform: uppercase;
 }
+/* the gap between each form */
 section .signin .content .form 
 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 }
 section .signin .content .form .inputBox
 {
   position: relative;
   width: 100%;
 }
+/* things to do with each form */
 section .signin .content .form .inputBox input 
 {
   position: relative;
@@ -117,6 +122,7 @@ section .signin .content .form .inputBox input
   font-weight: 500;
   font-size: 1em;
 }
+/* the words inside the forms */
 section .signin .content .form .inputBox i 
 {
   position: absolute;
@@ -146,11 +152,13 @@ section .signin .content .form .inputBox i
   color: #fff;
   text-decoration: none;
 }
+/* something to do with the email form,,,,the font weight to be precise */
 .signin .content .form .links a:nth-child(2)
 {
   color: #ED7014;
   font-weight: 600;
 }
+/* the submit button  */
 .signin .content .form .inputBox input[type="submit"]
 {
   padding: 10px;

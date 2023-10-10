@@ -12,16 +12,16 @@
    <div class="signin"> 
     <div class="content"> 
         <h2>Register</h2> 
-        <form action="php/register.php" method="POST">
+        <form action="../scripts/register.php" method="POST">
             <div class="form"> 
                 <div class="inputBox"> 
-                    <input type="text" required> <i>First name</i> 
+                    <input type="text" name="first_name" required> <i>First name</i> 
                 </div> 
                 <div class="inputBox"> 
-                    <input type="text" required> <i>Last name</i> 
+                    <input type="text" name="last_name" required> <i>Last name</i> 
                 </div>
                 <div class="inputBox"> 
-                    <input type="email" required> <i>Email</i> 
+                    <input type="email" name="email" required> <i>Email</i> 
                 </div>
                 <!-- Radio box -->
                 <label for="beginner" class="radio-label">
@@ -34,20 +34,21 @@
                 </label>
                 <!-- drop down  -->
                 <label for="profession" style="font-size:18px; color: aliceblue;">Pick your Profession</label>
-                    <select id="profession" name="prof">
-                        <option value="fe">Front end</option>
-                        <option value="be">Back end</option>
-                        <option value="ai">Artificial Intelligence</option>
-                        <option value="db">Database</option>
-                        <option value="fs">Full stack</option>
-                        <option value="cs">Cyber Security</option>
+                    <select id="profession" name="profession">
+                        <option value="Front end">Front end</option>
+                        <option value="Back end">Back end</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Database">Database</option>
+                        <option value="Full stack">Full stack</option>
+                        <option value="Cyber Security">Cyber Security</option>
                     </select>
+
                 <div class="inputBox"> 
-                <input type="password" required> <i>Password</i> 
+                    <input type="password" name="password" required> <i>Password</i> 
                 </div>
                 <div class="inputBox"> 
-                    <input type="password" required> <i>Confirm Password</i> 
-                    </div> 
+                    <input type="password" name="password" required> <i>Confirm Password</i> 
+                </div> 
                 <div class="inputBox"> 
                     <input type="submit" value="Register"> 
                 </div> 
