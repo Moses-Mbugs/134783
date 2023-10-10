@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Retrieve user input from the form
-    $email = $_POST["Username"]; // Change this to match your form field name
+    $email = $_POST["email"]; // Change this to match your form field name
     $password = $_POST["password"];
 
     // Query the database for the user's hashed password
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["user_id"] = $row["id"];
 
             // Redirect to the dashboard or another page
-            header("Location: ../views/Landing.html"); // Change this to your dashboard page
+            header("Location: ../views/mentors.html"); // Change this to your dashboard page
             exit();
         } else {
             // Password is incorrect
