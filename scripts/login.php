@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Query the database for the user's hashed password
-    $sql = "SELECT id, password FROM users WHERE email = '$email'";
+    $sql = "SELECT * FROM users WHERE email = '$email'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -30,12 +30,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Verify the entered password against the stored hashed password
         if (password_verify($password, $hashed_password)) {
-            // Start a session and store user information (e.g., user ID)
-            session_start();
-            $_SESSION["user_id"] = $row["id"];
+            // // Start a session and store user information (e.g., user ID)
+            // session_start();
+            // $_SESSION["user_id"] = $row["id"];
 
-            // Redirect to the dashboard or another page
-            header("Location: ../views/mentors.html"); // Change this to your dashboard page
+            // // Redirect to the dashboard or another page
+
+            //generate code
+            require_once '../scripts/functions.php';
+            $code = numberGenerator(5);
+            $userId = $row["id"];
+            $currentDateTime = date('Y-m-d H:i:s');
+
+            //save the code in the database
+            $sq2 = "UPDATE users SET lastlogin='$currentDateTime', code='$code' WHERE id=$userId";
+            $conn->query($sq2);
+
+            //send email to the user
+            $userEmail = $row['email'];
+            $userName = $row['first_name'];
+
+            sendCode($userEmail,$userName,$code);
+
+            //redirect them to the confirmCode page
+            header("Location: ../views/confirmCode.php?userId=$userId"); // Change this to your dashboard page
             exit();
         } else {
             // Password is incorrect
