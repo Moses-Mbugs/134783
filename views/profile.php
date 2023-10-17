@@ -1,52 +1,23 @@
 <?php
-// Start the session to access session variables
-session_start();
-
-// Database connection parameters
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "apprentice";
-
-// Create a database connection
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// Check for database connection errors
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Connect to the database
+$conn = new mysqli("localhost", "root", "", "apprentice");
+// Write a query to select the desired information from the database
+$sql = "SELECT first_name, second_name, bio, photo, email, profession FROM users";
+// Execute the query and store the results in a variable
+$result = $conn->query($sql);
+// Use a loop to iterate through the results and display the information on the page
+while ($row = $result->fetch_assoc()) {
+  echo "First Name: " . $row["first_name"] . "<br>";
+  echo "Last Name: " . $row["last_name"] . "<br>";
+  echo "Bio: " . $row["bio"] . "<br>";
+  echo "Photo: " . $row["photo"] . "<br>";
+  echo "Email: " . $row["email"] . "<br>";
+  echo "Profession: " . $row["profession"] . "<br>";
 }
-
-// Retrieve the user's ID from the session
-$user_id = $_SESSION['id'];
-
-$first_name = $last_name = $email = $profile_photo = $bio = '';
-
-// SQL query to retrieve user information
-$sql = "SELECT first_name, last_name, email, profession, profile_photo, bio FROM users WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-
-// Check if the user was found in the database
-if ($result->num_rows > 0) {
-    // Fetch user information
-    $row = $result->fetch_assoc();
-
-    // Store user information in variables
-    $first_name = $row['first_name'];
-    $last_name = $row['last_name'];
-    $email = $row['email'];
-    $profession = $row['profession']; // You can display this if needed
-    $profile_photo = $row['profile_photo'];
-    $bio = $row['bio'];
-} else {
-    // Handle the case where the user is not found, you can redirect or display an error message
-    // For example, you can use header("Location: error.php") to redirect to an error page.
-    echo "User not found";
-}
+// Close the connection to the database
+$conn->close();
 ?>
-<!DOCTYPE html> 
+<!-- <!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -77,16 +48,10 @@ if ($result->num_rows > 0) {
                 <p id="bio"><?php echo $bio; ?></p>
             <?php endif; ?>
 
-        <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-            <!-- <img src="../images/profile.jpg" alt="John" style="width:100%"> 
-            <img id="profile-photo" src="" alt="Profile Photo"> 
-            <h2 id = "name">  </h2>
-            <p id="email"></p>
-            <p class="title" id="profession" ></p>
-            <p id="bio"></p> -->
+        
         </div>
     </div>
     
     
 </body>
-</html>
+</html> -->
