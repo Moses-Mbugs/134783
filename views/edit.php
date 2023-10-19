@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -52,14 +51,9 @@ $conn->close();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-    <link rel="stylesheet" href="../css/profileStyle.css">
     <title>Profile</title>
-</head>
 </head>
 <body>
     <h1>Profile Information</h1>
@@ -76,29 +70,3 @@ $conn->close();
     <!-- You can add more HTML for user interactions or editing here -->
 </body>
 </html>
-
-<body>
-    <div class="navbar">
-        <a href="mentors.php"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
-        <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-        <a href="profile.php" class="active"><i class="fa fa-fw fa-user"></i> Profile </a>
-    </div>
-    <!-- profile card -->
-    <div class="profile-info">
-        <div class="card">
-            <?php if (isset($profile_photo)): ?>
-                <img src="<?php echo $profile_photo; ?>" alt="Profile Photo">
-            <?php endif; ?>
-            <?php if (isset($first_name) && isset($last_name)): ?>
-                <h2 id="name"> Howdy <?php echo $first_name; ?></h2>
-            <?php endif; ?>
-            <?php if (isset($email)): ?>
-                <p id="email"><?php echo $email; ?></p>
-            <?php endif; ?>
-            <?php if (isset($bio)): ?>
-                <p id="bio"><?php echo $bio; ?></p>
-            <?php endif; ?>
-        </div>
-    </div>
-</body>
