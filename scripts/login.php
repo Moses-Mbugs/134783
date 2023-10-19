@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify the entered password against the stored hashed password
         if (password_verify($password, $hashed_password)) {
             // // Start a session and store user information (e.g., user ID)
-            // session_start();
-            // $_SESSION["user_id"] = $row["id"];
+            session_start();
+            $_SESSION["user_id"] = $row["id"];
 
             // // Redirect to the dashboard or another page
 
