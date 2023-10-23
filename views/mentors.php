@@ -14,7 +14,7 @@
         }
 
         // SQL query to retrieve user information
-        $query = "SELECT first_name, last_name, profile_photo, profession FROM users";
+        $query = "SELECT first_name, last_name, profession FROM users";
         $result = $conn->query($query);
 ?>
 
@@ -43,7 +43,7 @@
         if ($result) {
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="cards">';
-                echo '<img src="' . $row['profile_photo'] . '" alt="' . $row['first_name'] . ' ' . $row['last_name'] . '">';
+                // echo '<img src="' . $row['profile_photo'] . '" alt="' . $row['first_name'] . ' ' . $row['last_name'] . '">';
                 echo '<h2>' . $row['first_name'] . ' ' . $row['last_name'] . '</h2>';
                 echo '<p class="title">' . $row['profession'] . '</p>';
                 echo '<p><button>Checkout Profile</button></p>';

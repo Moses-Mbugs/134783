@@ -393,3 +393,248 @@ if ($result->num_rows > 0) {
     
 </body>
 </html>
+
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+<?php
+// Database connection parameters
+$host = "localhost";
+$username = "root";
+$password = "";
+$dbname = "apprentice";
+
+// Create a database connection
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check for database connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// SQL query to retrieve user information
+$query = "SELECT first_name, last_name, profile_photo, profession FROM users";
+$result = $conn->query($query);
+
+// Start the HTML content
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <title>Mentors</title>
+</head>
+<body>
+    <!-- Navbar information -->
+    <div class="navbar">
+        <a href="mentors.php" class="active"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
+        <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+        <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+    </div>
+    <!-- Place where mentor cards will be displayed -->
+
+    <div class="cards">
+        <?php
+        // Check if the query was successful
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="card">';
+                echo '<img src="' . $row['profile_photo'] . '" alt="' . $row['first_name'] . ' ' . $row['last_name'] . '">';
+                echo '<h2>' . $row['first_name'] . ' ' . $row['last_name'] . '</h2>';
+                echo '<p class="title">' . $row['profession'] . '</p>';
+                echo '<p><button>Checkout Profile</button></p>';
+                echo '<p><button>Request Mentorship</button></p>';
+                echo '</div>';
+            }
+        } else {
+            echo "Failed to fetch mentor data: " . $conn->error;
+        }
+        ?>
+    </div>
+</div>
+
+</body>
+</html>
+Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+/* this is for the navbar ps it has icons */
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  .active {
+    background-color: orange;
+    font-family: "Sofia";
+  }
+  
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+  }
+
+ /* this is CSS if for the profile cards */
+
+ /* Styles for profile cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+/* Additional styles for mentor cards */
+.mentor-cards-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin: 10px; /* Adjust margin as needed to create spacing between mentor cards */
+}
+
+.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+max-width: calc(33.33% - 20px); /* 3 cards per row, adjust as needed */
+margin-bottom: 20px; /* Add margin between rows */
+text-align: center;
+font-family: arial;
+display: inline-block;
+vertical-align: top;
+padding: 10px;
+background: #f9f9f9;
+transition: transform 0.2s;
+box-sizing: border-box; /* Prevent cards from breaking the layout */
+margin-right: 10px; /* Add margin between columns */
+}
+
+/* Hover effect for mentor cards */
+.card:hover {
+transform: scale(1.05);
+}
+Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+<?php if (isset($profile_photo)): ?>
+                <img src="<?php echo $profile_photo; ?>" alt="Profile Photo">
+            <?php endif; ?>
+            <?php if (isset($first_name)): ?>
+                <h2 id="name"> Howdy <?php echo $first_name; ?></h2>
+            <?php endif; ?>
+            <?php if (isset($email)): ?>
+                <p id="email"><?php echo $email; ?></p>
+            <?php endif; ?>
+            <?php if (isset($bio)): ?>
+                <p id="bio"><?php echo $bio; ?></p>
+            <?php endif; ?>
+            <h1>Profile Information</h1>
+
+
+
+            Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+<?php
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $phone_number = filter_var($_POST["phone_number"], FILTER_SANITIZE_STRING);
+    $age = filter_var($_POST["age"], FILTER_SANITIZE_NUMBER_INT);
+    $bio = filter_var($_POST["bio"], FILTER_SANITIZE_STRING);
+    $location = filter_var($_POST["location"], FILTER_SANITIZE_STRING);
+    $gender = filter_var($_POST["gender"], FILTER_SANITIZE_STRING);
+    $user_id = $_SESSION["user_id"];
+
+    if (empty($phone_number) || empty($age) || empty($location) || empty($gender)) {
+        // Handle validation errors
+        // You can also redirect back to the edit page with an error message
+    } else {
+        $host = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "apprentice";
+
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Upload profile photo
+        $target_dir = "../images/profile_photos/"; 
+        $target_file = $target_dir . basename($_FILES["profile_photo"]["name"]);
+
+        if (move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $target_file)) {
+            // File uploaded successfully, store the file path in the database
+            $profile_photo = $target_file;
+
+            $sql = "INSERT INTO user_details (user_id, phone_number, age, location, gender, bio, profile_photo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("iiisssb", $user_id, $phone_number, $age, $location, $gender, $bio, $profile_photo);
+
+            if ($stmt->execute()) {
+                // Redirect back to the profile page or display a success message
+                header("Location: profile.php");
+                exit();
+            } else {
+                echo "Error inserting user details: "  . $stmt->error;
+            }
+        } else {
+            echo "Error uploading profile photo." ;
+        }
+
+        
+        $conn->close();
+    }
+}
+?>

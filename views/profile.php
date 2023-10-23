@@ -45,6 +45,8 @@ if ($result->num_rows > 0) {
     $age = $row["age"];
     $location = $row["location"];
     $gender = $row["gender"];
+    $bio = $row["bio"];
+    $profile_photo = $row["profile_photo"];
 }
 $conn->close();
 ?>
@@ -61,21 +63,7 @@ $conn->close();
     <title>Profile</title>
 </head>
 </head>
-<body>
-    <h1>Profile Information</h1>
 
-    <!-- Display user information -->
-    <p>Name: <?php echo $first_name . ' ' . $last_name; ?></p>
-    <p>Email: <?php echo $email; ?></p>
-    <p>Profession: <?php echo $profession; ?></p>
-    <p>Phone Number: <?php echo $phone_number; ?></p>
-    <p>Age: <?php echo $age; ?></p>
-    <p>Location: <?php echo $location; ?></p>
-    <p>Gender: <?php echo $gender; ?></p>
-
-    <!-- You can add more HTML for user interactions or editing here -->
-</body>
-</html>
 
 <body>
     <div class="navbar">
@@ -87,18 +75,16 @@ $conn->close();
     <!-- profile card -->
     <div class="profile-info">
         <div class="card">
-            <?php if (isset($profile_photo)): ?>
-                <img src="<?php echo $profile_photo; ?>" alt="Profile Photo">
-            <?php endif; ?>
-            <?php if (isset($first_name) && isset($last_name)): ?>
-                <h2 id="name"> Howdy <?php echo $first_name; ?></h2>
-            <?php endif; ?>
-            <?php if (isset($email)): ?>
-                <p id="email"><?php echo $email; ?></p>
-            <?php endif; ?>
-            <?php if (isset($bio)): ?>
-                <p id="bio"><?php echo $bio; ?></p>
-            <?php endif; ?>
+            <p>Name: <?php echo $first_name . ' ' . $last_name; ?></p>
+            <p>Email: <?php echo $email; ?></p>
+            <p>Profession: <?php echo $profession; ?></p>
+            <p>Phone Number: <?php echo $phone_number; ?></p>
+            <p>Age: <?php echo $age; ?></p>
+            <p>Location: <?php echo $location; ?></p>
+            <p>Gender: <?php echo $gender; ?></p>
+            <p>Bio: <?php echo $bio; ?></p>
+
+            <a href="edit.html" button> Update</button></a>
         </div>
     </div>
 </body>

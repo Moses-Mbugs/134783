@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/edit.css">
+    <title>Edit User Details</title>
+</head>
+<body>
+    <h1>Edit Your User Details</h1>
+
+    <!-- Edit User Details Form -->
+    <form method="POST" action="../scripts/user_details.php" enctype="multipart/form-data">
+        <!-- Profile photo -->
+        <label for="profile_photo">Choose a profile photo:</label>
+        <input type="file" name="profile_photo" id="profile_photo" accept="image/*">
+        <!-- <button type="submit" name="submit">Upload</button> -->
+               
+        <!-- Phone Number -->
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number" id="phone_number" value="">
+
+        <!-- Age -->
+        <label for="age">Age:</label>
+        <input type="text" name="age" id="age" value="">
+
+        <!-- Location -->
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" value="">
+
+        <!-- bio -->
+        <label for="bio">Bio</label>
+        <input type="text" name="bio" id="" value="">
+
+        <!-- Gender -->
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <!--  -->
+
+        <input type="submit" value="Save Changes">
+    </form>
+</body>
+</html>
