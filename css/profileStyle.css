@@ -1,46 +1,67 @@
-/* navbar */
-.navbar {
-    width: 100%;
-    background-color: #555;
-    overflow: auto;
-  }
-  
-  .navbar a {
-    float: left;
-    padding: 12px;
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-    
-  }
-  
-  .navbar a:hover {
-    background-color: #000;
-  }
-  
-  .active {
-    background-color: orange;
-    font-family: "Sofia";
-  }
-  
-  @media screen and (max-width: 500px) {
-    .navbar a {
-      float: none;
-      display: block;
-    }
-  }
-/* this is CSS if for the profile cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
+/* background color */
+body {
+  background: linear-gradient(110.1deg, rgb(241, 115, 30) 18.9%, rgb(231, 29, 54) 90.7%);
+  margin: 0;
+  height: 100vh; /* Make the background cover the whole viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.title {
-  color: grey;
-  font-size: 18px;
+/* Navbar */
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: orange;
+  font-family: "Sofia";
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+      float: none;
+      display: block;
+  }
+}
+
+/* Profile cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(234, 66, 5, 0.8);
+  max-width: 300px;
+  text-align: left;
+  font-family: Arial;
+  background-color: rgba(255, 255, 255, 0.5); /* Add opacity to the background */
+  border-radius: 10px; /* Add rounded corners */
+  padding: 10px; /* Add some padding for spacing */
+  margin: 10px; /* Add margin to separate cards */
+  display: flex; /* Display content in a row */
+  align-items: center; /* Vertically center content */
+  justify-content: space-between; /* Space between image and text */
+}
+
+.card img {
+  max-width: 100px; /* Limit the image width */
+  border-radius: 50%; /* Make the image circular */
+}
+
+.card p {
+  margin: 0;
+  padding-left: 10px; /* Add left padding for spacing */
 }
 
 button {
@@ -62,6 +83,7 @@ a {
   color: black;
 }
 
-button:hover, a:hover {
+button:hover,
+a:hover {
   opacity: 0.7;
 }

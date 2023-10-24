@@ -19,11 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $profile_photo = null;
 
     if (isset($_FILES["profile_photo"]) && $_FILES["profile_photo"]["error"] === UPLOAD_ERR_OK) {
-        $target_dir = "../images/profile_photos/"; // Specify the directory for profile photos
+        $target_dir = "../images/profile_photos/";
         $target_file = $target_dir . basename($_FILES["profile_photo"]["name"]);
 
         if (move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $target_file)) {
-            // File uploaded successfully, store the file path in the database
             $profile_photo = $target_file;
         } else {
             echo "Error uploading profile photo.";
