@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    // Update the user's details in the database
+    // Update or insert the user's details in the database
     $host = "localhost";
     $username = "root";
     $password = "";
@@ -42,20 +42,46 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Update the user's details in the database
-    $sql = "INSERT INTO user_details (user_id, phone_number, age, location, gender, bio, profile_photo) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iisssss", $user_id, $phone_number, $age, $location, $gender, $bio, $profile_photo);
+    // Check if user details already exist
+    $check_sql = "SELECT * FROM user_details WHERE user_id = ?";
+    $stmt_check = $conn->prepare($check_sql);
+    $stmt_check->bind_param("i", $user_id);
+    $stmt_check->execute();
+    $result = $stmt_check->get_result();
 
-    if ($stmt->execute()) {
-        // Redirect back to the profile page or display a success message
-        header("Location: ../views/profile.php");
-        exit();
+    if ($result->num_rows > 0) {
+        // User details exist, update them
+        $update_sql = "UPDATE user_details SET phone_number = ?, age = ?, location = ?, gender = ?, bio = ?, profile_photo = ? WHERE user_id = ?";
+        $stmt_update = $conn->prepare($update_sql);
+        $stmt_update->bind_param("iiisssb",$user_id, $phone_number, $age, $location, $gender, $bio, $profile_photo);
+
+        if ($stmt_update->execute()) {
+            // Redirect back to the profile page or display a success message
+            header("Location: ../views/profile.php");
+            exit();
+        } else {
+            echo "Error updating user details: " . $conn->error;
+        }
     } else {
-        echo "Error inserting user details: " . $conn->error;
-    }
+        // User details do not exist, insert them
+        $insert_sql = "INSERT INTO user_details (user_id, phone_number, age, location, gender, bio, profile_photo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt_insert = $conn->prepare($insert_sql);
+        $stmt_insert->bind_param("iiisssb", $user_id, $phone_number, $age, $location, $gender, $bio, $profile_photo);
 
-    $stmt->close();
+
+        if ($stmt_insert->execute()) {
+            // Redirect back to the profile page or display a success message
+            header("Location: ../views/profile.php");
+            exit();
+        } else {
+            echo "Error inserting user details: " . $conn->error;
+        }
+      
+
+    }
+    $stmt_check->close();
+    $stmt_update->close();
+    $stmt_insert->close();
     $conn->close();
 }
 ?>

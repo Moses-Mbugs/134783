@@ -1,89 +1,94 @@
 /* background color */
-body {
-  background: linear-gradient(110.1deg, rgb(241, 115, 30) 18.9%, rgb(231, 29, 54) 90.7%);
-  margin: 0;
-  height: 100vh; /* Make the background cover the whole viewport */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-/* Navbar */
-.navbar {
-  width: 100%;
-  background-color: #555;
-  overflow: auto;
-}
+        /* Navbar */
+        body{
+          z-index: 1;
+          background: linear-gradient(-45deg, red, black, orange, black, green );
+          background-size: 400% 400%;
+          width: 100%;
+          height: 100vh;
+          animation: animate 15s ease infinite;    
+       }
+       @keyframes animate {
+          0% {
+              background-position: 0% 50%;
+          }
+          50% {
+              background-position: 100% 50%;
+          }
+          100% {
+              background-position: 0% 50%;
+          }
+      }
 
-.navbar a {
-  float: left;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  font-size: 17px;
-}
+      .navbar {
+          width: 100%;
+          background-color: #555;
+          overflow: auto;
+      }
+      .navbar a {
+          float: left;
+          padding: 12px;
+          color: white;
+          text-decoration: none;
+          font-size: 17px;
+      }
 
-.navbar a:hover {
-  background-color: #000;
-}
+      .navbar a:hover {
+          background-color: #000;
+      }
 
-.active {
-  background-color: orange;
-  font-family: "Sofia";
-}
+      .active {
+          background-color: orange;
+          font-family: "Sofia";
+      }
 
-@media screen and (max-width: 500px) {
-  .navbar a {
-      float: none;
-      display: block;
-  }
-}
-
-/* Profile cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(234, 66, 5, 0.8);
-  max-width: 300px;
-  text-align: left;
-  font-family: Arial;
-  background-color: rgba(255, 255, 255, 0.5); /* Add opacity to the background */
-  border-radius: 10px; /* Add rounded corners */
-  padding: 10px; /* Add some padding for spacing */
-  margin: 10px; /* Add margin to separate cards */
-  display: flex; /* Display content in a row */
-  align-items: center; /* Vertically center content */
-  justify-content: space-between; /* Space between image and text */
-}
-
-.card img {
-  max-width: 100px; /* Limit the image width */
-  border-radius: 50%; /* Make the image circular */
-}
-
-.card p {
-  margin: 0;
-  padding-left: 10px; /* Add left padding for spacing */
-}
-
-button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-}
-
-a {
-  text-decoration: none;
-  font-size: 22px;
-  color: black;
-}
-
-button:hover,
-a:hover {
-  opacity: 0.7;
-}
+      @media screen and (max-width: 500px) {
+      .navbar a {
+          float: none;
+          display: block;
+      }
+      }
+      /* centered content */
+      .centered-content {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgba(255, 255, 255, 0.3); 
+          padding: 20px; 
+          border-radius: 10px; 
+          backdrop-filter: blur(10px);
+          width: 800px;
+          height: 480px;
+          }
+      .view-button {
+          background-color: #373535;
+          color: #fff; 
+          border: none;
+          padding: 10px 20px;
+          margin-left: 220px;
+          cursor: pointer; 
+          font-family: ubuntu;
+          border-radius: 40px;
+          top: 75%;
+      }
+      .image{
+          border-radius: 15%;
+      }
+      .text {
+          width:300px;
+          padding:10px;
+          height:150px;
+          float:left;
+          margin:10px;
+          font-size: 17px;
+          color: #fff;
+      }
+      .image {
+          width:325px;
+          padding:10px;
+          height:340px;
+          float:right;
+          margin:10px;
+      }
