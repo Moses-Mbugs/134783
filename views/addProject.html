@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/projo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add project</title>
+   
+</head>
+<body>
+    <div class="navbar">
+        <a href="mentors.php"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="#"><i class="fa fa-fw fa-search"></i> View projects</a>
+        <a href="addProject.html"><i class="fa fa-fw fa-envelope"></i> Add project </a>
+        <a href="profile.php" class="active"><i class="fa fa-fw fa-user"></i> Profile </a>
+        <a href="logout.html"><i class="fa fa-fw fa-logout"></i>Log out </a>
+    </div>
+
+    <div class="container">
+        <form action="../scripts/projo.php" method="post" enctype="multipart/form-data">
+            <label for="chat-image" class="upload-button">Upload Image</label>
+            <input type="file" id="chat-image" name="chat-image" accept="image/*">
+            <div class="image-preview">
+                <img id="image-preview" src="#" alt="Image Preview">
+            </div>
+            <h2>Insert Chat Description</h2>
+            <textarea name="chat-description" rows="5" placeholder="Enter chat description..."></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const uploadButton = document.querySelector('.upload-button');
+        const imagePreview = document.getElementById('image-preview');
+        const fileInput = document.getElementById('chat-image');
+
+        uploadButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.style.display = 'block';
+                    imagePreview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

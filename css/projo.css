@@ -1,0 +1,106 @@
+/* Styles for the navbar */
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  .active {
+    background-color: orange;
+    
+  }
+  
+  @media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+  }
+/* for the page */
+body {
+    background: linear-gradient(110.1deg, #f1731e 18.9%, #e51d36 90.7%);
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+label.upload-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #e51d36;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.image-preview {
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    background: #333;
+    border: 2px dashed #e51d36;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e51d36;
+    border-radius: 5px;
+    background: transparent;
+    color: white;
+    margin-top: 10px;
+    resize: none;
+}
+
+button {
+    padding: 10px 20px;
+    background: #e51d36;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #f1731e;
+}

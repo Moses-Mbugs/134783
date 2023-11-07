@@ -25,18 +25,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <title>Mentors</title>
 </head>
 <body>
     <!-- Navbar information -->
     <div class="navbar">
-        <a href="mentors.php" class="active"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
-        <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-        <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+        <a href="mentors.php"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="#"><i class="fa fa-fw fa-search"></i> View projects</a>
+        <a href="addProject.html"><i class="fa fa-fw fa-envelope"></i> Add project </a>
+        <a href="profile.php" class="active"><i class="fa fa-fw fa-user"></i> Profile </a>
+        <a href="logout.html"><i class="fa fa-fw fa-logout"></i>Log out </a>
     </div>
-
     <!-- Place where mentor cards will be displayed -->
     <div class="arrangement">
         <?php

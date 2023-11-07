@@ -19,7 +19,7 @@
 
 .active {
   background-color: orange;
-  font-family: "Sofia";
+
 }
 
 @media screen and (max-width: 500px) {
