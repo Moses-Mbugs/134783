@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/projo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Add project</title>
+    <title>Add Project</title>
    
 </head>
 <body>
     <div class="navbar">
         <a href="mentors.php"><i class="fa fa-fw fa-home"></i> Home</a>
         <a href="#"><i class="fa fa-fw fa-search"></i> View projects</a>
-        <a href="addProject.html"><i class="fa fa-fw fa-envelope"></i> Add project </a>
-        <a href="profile.php" class="active"><i class="fa fa-fw fa-user"></i> Profile </a>
+        <a href="addProject.html" class="active"><i class="fa-regular fa-code"></i></i> Add project </a>
+        <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile </a>
         <a href="logout.html"><i class="fa fa-fw fa-logout"></i>Log out </a>
     </div>
 
@@ -24,8 +24,20 @@
             <div class="image-preview">
                 <img id="image-preview" src="#" alt="Image Preview">
             </div>
-            <h2>Insert Chat Description</h2>
-            <textarea name="chat-description" rows="5" placeholder="Enter chat description..."></textarea>
+            <label for="project-title">Project Title</label>
+            <input type="text" id="project-title" name="project-title" required>
+            <label for="project-category">Project Category</label>
+            <select id="project-category" name="project-category" required>
+                <option value="ArtificialIntelligence">Artificial Intelligence</option>
+                <option value="FrontEnd">FrontEnd</option>
+                <option value="BackEnd">BackEnd</option>
+                <option value="IOT">IOT</option>
+                <option value="Database">Database</option>
+                <option value="Full stack">Full stack</option>
+                <option value="Cyber Security">Cyber Security</option>
+            </select>
+            <p>Insert Chat Description<p>
+            <textarea name="chat-description" rows="5" placeholder="Enter chat description..." required></textarea>
             <button type="submit">Submit</button>
         </form>
     </div>

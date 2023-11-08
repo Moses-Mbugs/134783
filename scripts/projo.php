@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Handle image upload
-    $image_path = null;
+    $image_path = null; 
 
-    if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
-        $target_dir = "project_images/"; // Specify the directory for project images
-        $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    if (isset($_FILES["chat-image"]) && $_FILES["chat-image"]["error"] === UPLOAD_ERR_OK) {
+        $target_dir = "../images/project_images/"; // Specify the directory for project images
+        $target_file = $target_dir . basename($_FILES["chat-image"]["name"]);
 
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+        if (move_uploaded_file($_FILES["chat-image"]["tmp_name"], $target_file)) {
             $image_path = $target_file;
         } else {
             echo "Error uploading project image.";
@@ -42,13 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Check if the description field exists in the POST request
-    if (!isset($_POST["description"])) {
+    if (!isset($_POST["chat-description"])) {
         echo "Description is required.";
         exit(); // Terminate the script
     }
 
     // Retrieve and sanitize user input for description
-    $description = filter_var($_POST["description"], FILTER_SANITIZE_STRING);
+    $description = filter_var($_POST["chat-description"], FILTER_SANITIZE_STRING);
 
     // Insert the project into the database
     $insert_sql = "INSERT INTO projects (user_id, image_path, description) VALUES (?, ?, ?)";
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($stmt->execute()) {
         // Redirect back to the projects page or display a success message
-        header("Location: projects.php");
+        header("Location: view.php");
         exit();
     } else {
         echo "Error inserting project: " . $conn->error;

@@ -65,7 +65,7 @@ $conn->close();
     <div class="navbar">
         <a href="mentors.php"><i class="fa fa-fw fa-home"></i> Home</a>
         <a href="#"><i class="fa fa-fw fa-search"></i> View projects</a>
-        <a href="addProject.html"><i class="fa fa-fw fa-envelope"></i> Add project </a>
+        <a href="addProject.html"><i class="fa-regular fa-code"></i></i> Add project </a>
         <a href="profile.php" class="active"><i class="fa fa-fw fa-user"></i> Profile </a>
         <a href="logout.html"><i class="fa fa-fw fa-logout"></i>Log out </a>
     </div>

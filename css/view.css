@@ -1,0 +1,103 @@
+/* Styles for the navbar */
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  .active {
+    background-color: orange;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+  }
+
+/* Styles for the header */
+
+.header {
+    background-color: #FFA500; /* Orange background */
+    text-align: center;
+    padding: 20px;
+}
+
+.header h1 {
+    color: #000; /* Black text color */
+}
+
+/* Styles for project cards */
+.project-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.project-card {
+    background-color: #000; /* Black background */
+    color: #FFA500; /* Orange text color */
+    padding: 20px;
+    border: 2px solid #FFA500; /* Orange border */
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.read-button {
+    background-color: #FFA500; /* Orange button background */
+    color: #000; /* Black button text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.read-button:hover {
+    background-color: #FFD700; /* Lighter orange on hover */
+}
+
+/* Style for the project title */
+#project-title {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style for the project category dropdown */
+#project-category {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #f8f8f8; /* Background color for the dropdown */
+    color: #333; /* Text color */
+}
