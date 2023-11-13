@@ -3,32 +3,32 @@
     width: 100%;
     background-color: #555;
     overflow: auto;
-  }
-  
-  .navbar a {
+}
+
+.navbar a {
     float: left;
     padding: 12px;
     color: white;
     text-decoration: none;
     font-size: 17px;
-  }
-  
-  .navbar a:hover {
+}
+
+.navbar a:hover {
     background-color: #000;
-  }
-  
-  .active {
+}
+
+.active {
     background-color: orange;
-    
-  }
-  
-  @media screen and (max-width: 500px) {
+}
+
+@media screen and (max-width: 500px) {
     .navbar a {
         float: none;
         display: block;
     }
-  }
-/* for the page */
+}
+
+/* Styles for the page */
 body {
     background: linear-gradient(110.1deg, #f1731e 18.9%, #e51d36 90.7%);
     font-family: Arial, sans-serif;
@@ -80,15 +80,23 @@ label.upload-button {
     display: none;
 }
 
+label {
+    display: block;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+input[type="text"],
+select,
+input[type="date"],
 textarea {
     width: 100%;
     padding: 10px;
+    margin-top: 5px;
     border: 1px solid #e51d36;
     border-radius: 5px;
     background: transparent;
     color: white;
-    margin-top: 10px;
-    resize: none;
 }
 
 button {
@@ -98,7 +106,8 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 button:hover {

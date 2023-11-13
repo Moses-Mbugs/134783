@@ -30,11 +30,13 @@
 <body>
     <!-- Navbar information -->
     <div class="navbar">
-        <a href="mentors.php"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#"><i class="fa fa-fw fa-search"></i> View projects</a>
-        <a href="addProject.html"><i class="fa-regular fa-code"></i></i> Add project </a>
-        <a href="profile.php" class="active"><i class="fa fa-fw fa-user"></i> Profile </a>
-        <a href="logout.html"><i class="fa fa-fw fa-logout"></i>Log out </a>
+        <a href="mentors.php" class="active">Home</a>
+        <a href="addProject.html"> Add project </a>
+        <a href="view.php">View projects</a>
+        <a href="myprojects.php"> My projects </a>
+        <a href="chat"> My mentees </a>
+        <a href="profile.php" class="active"> Profile </a>
+        <a href="logout.html">Log out </a>
     </div>
     <!-- Place where mentor cards will be displayed -->
     <div class="arrangement">

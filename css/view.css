@@ -80,24 +80,3 @@
     background-color: #FFD700; /* Lighter orange on hover */
 }
 
-/* Style for the project title */
-#project-title {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-/* Style for the project category dropdown */
-#project-category {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    background: #f8f8f8; /* Background color for the dropdown */
-    color: #333; /* Text color */
-}

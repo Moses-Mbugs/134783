@@ -10,32 +10,48 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="mentors.php"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#"><i class="fa fa-fw fa-search"></i> View projects</a>
-        <a href="addProject.html" class="active"><i class="fa-regular fa-code"></i></i> Add project </a>
-        <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile </a>
-        <a href="logout.html"><i class="fa fa-fw fa-logout"></i>Log out </a>
+        <a href="mentors.php"></i> Home</a>
+        <a href="addProject.html" class="active"></i></i> Add project </a>
+        <a href="view.php"></i> View projects</a>
+        <a href="myprojects.php"></i> My projects </a>
+        <a href="chat"></i> My mentees </a>
+        <a href="profile.php"></i> Profile </a>
+        <a href="logout.html"></i>Log out </a>
     </div>
 
     <div class="container">
         <form action="../scripts/projo.php" method="post" enctype="multipart/form-data">
+
+            <!-- image -->
             <label for="chat-image" class="upload-button">Upload Image</label>
             <input type="file" id="chat-image" name="chat-image" accept="image/*">
             <div class="image-preview">
                 <img id="image-preview" src="#" alt="Image Preview">
             </div>
+
+            <!-- title -->
             <label for="project-title">Project Title</label>
-            <input type="text" id="project-title" name="project-title" required>
+            <input type="text" id="title" name="title" required>
+
+            <!-- categories -->
             <label for="project-category">Project Category</label>
             <select id="project-category" name="project-category" required>
-                <option value="ArtificialIntelligence">Artificial Intelligence</option>
-                <option value="FrontEnd">FrontEnd</option>
-                <option value="BackEnd">BackEnd</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Front End">FrontEnd</option>
+                <option value="Back End">BackEnd</option>
                 <option value="IOT">IOT</option>
                 <option value="Database">Database</option>
                 <option value="Full stack">Full stack</option>
                 <option value="Cyber Security">Cyber Security</option>
-            </select>
+            </select><br/> 
+
+            <!-- start and end dates -->
+            <label for="project-start-date">Start Date</label>
+            <input type="date" id="project-start-date" name="project-start-date" required>
+            <label for="project-end-date">End Date</label>
+            <input type="date" id="project-end-date" name="project-end-date" required>
+
+            <!-- description -->
             <p>Insert Chat Description<p>
             <textarea name="chat-description" rows="5" placeholder="Enter chat description..." required></textarea>
             <button type="submit">Submit</button>

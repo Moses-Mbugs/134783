@@ -1,0 +1,97 @@
+/* Styles for the navbar */
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  .active {
+    background-color: orange;
+  
+  }
+  
+  @media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+  }
+/* for the page */
+body {
+    background: linear-gradient(110.1deg, #f1731e 18.9%, #e51d36 90.7%);
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.project-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.project-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 20px;
+    border: 2px solid #e51d36;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.project-card h2 {
+    margin-top: 0;
+}
+
+.project-card h3 {
+    margin-top: 5px;
+}
+
+.project-card p {
+    margin: 5px 0;
+}
+
+.confirm-delete {
+    display: none;
+}
+
+.confirm-delete-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+.confirm-delete-popup button {
+    padding: 10px 20px;
+    background: #e51d36;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.confirm-delete-popup button:hover {
+    background: #f1731e;
+}  
