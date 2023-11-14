@@ -42,7 +42,7 @@ $result = $stmt->get_result();
 </head>
 <body>
     <div class="navbar">
-        <a href="mentors.php">Home</a>
+        <a href="HomePage.html">Home</a>
         <a href="addProject.html"> Add project </a>
         <a href="view.php">View projects</a>
         <a href="myprojects.php" class="active"> My projects </a>
@@ -88,30 +88,33 @@ $result = $stmt->get_result();
         }
 
         function deleteProject() {
-        // Get the projectID from the modal dataset
-        var projectID = document.getElementById("deleteConfirmation").dataset.projectId;
+            // Get the projectID from the modal dataset
+            var projectID = document.getElementById("deleteConfirmation").dataset.projectId;
 
-        // Send an AJAX request to delete the project
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Check the response from the server
-                if (xhr.responseText.trim() === 'success') {
-                    console.log('Project deleted successfully');
-                    // Optionally, you can update the UI or perform additional actions here
-                } else {
-                    console.error('Failed to delete project');
+            // Send an AJAX request to delete the project
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Check the response from the server
+                    if (xhr.responseText.trim() === 'success') {
+                        console.log('Project deleted successfully');
+                        // Optionally, you can update the UI or perform additional actions here
+                        // For example, you might want to remove the deleted project card from the UI
+                        document.getElementById('project-' + projectID).remove();
+                    } else {
+                        console.error('Failed to delete project');
+                    }
+                    // Close the delete confirmation modal
+                    document.getElementById("deleteConfirmation").style.display = "none";
                 }
-                // Close the delete confirmation modal
-                document.getElementById("deleteConfirmation").style.display = "none";
-            }
-        };
+            };
 
-        // Specify the server-side script that handles the deletion
-        var deleteScript = 'deleteproject.php?id=' + projectID;
-        xhr.open("GET", deleteScript, true);
-        xhr.send();
-    }
+            // Specify the server-side script that handles the deletion
+            var deleteScript = 'deleteproject.php?id=' + projectID;
+            xhr.open("GET", deleteScript, true);
+            xhr.send();
+        }
+
         function cancelDelete() {
             document.getElementById("deleteConfirmation").style.display = "none";
         }

@@ -18,9 +18,9 @@ if (isset($_GET['id'])) {
     }
 
     // Perform the update in the database to mark the project as hidden or deleted
-    // Replace 'is_hidden' with the actual column name you want to use
-    $updateSql = "UPDATE projects SET is_hidden = 1 WHERE id = ?";
-    
+    // Replace 'is_deleted' with the actual column name you want to use
+    $updateSql = "UPDATE projects SET is_deleted = 1 WHERE id = ?";
+
     // Update logic
     $stmt = $conn->prepare($updateSql);
     $stmt->bind_param("i", $projectID);

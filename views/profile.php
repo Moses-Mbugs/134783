@@ -63,7 +63,7 @@ $conn->close();
 
 <body>
     <div class="navbar">
-        <a href="mentors.php">Home</a>
+        <a href="HomePage.html">Home</a>
         <a href="addProject.html"> Add project </a>
         <a href="view.php">View projects</a>
         <a href="myprojects.php"> My projects </a>

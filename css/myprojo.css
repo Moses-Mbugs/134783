@@ -66,6 +66,20 @@ body {
     margin: 5px 0;
 }
 
+/* buttons */
+.delete-button {
+    background-color: #FFA500; /* Orange button background */
+    color: #000; /* Black button text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.delete-button:hover {
+    background-color: rgb(255, 0, 0); /* Lighter orange on hover */
+}
+
 .confirm-delete {
     display: none;
 }

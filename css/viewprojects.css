@@ -54,12 +54,12 @@
 }
 
 .view-button {
-    background-color: #FFA500; /* Orange button background */
+    background-color: #ff9500; /* Orange button background */
     color: #000; /* Black button text color */
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 25px;
     margin-top: 10px;
 }
 

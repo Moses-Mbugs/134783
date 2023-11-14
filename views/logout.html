@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+</head>
+<body>
+    <script>
+        // Send an AJAX request to logout.php
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Redirect to the landing page
+                window.location.href = 'Landing.html';
+            }
+        };
+
+        // Specify the server-side script for logout
+        var logoutScript = 'logout.php';
+        xhr.open("GET", logoutScript, true);
+        xhr.send();
+    </script>
+</body>
+</html>
