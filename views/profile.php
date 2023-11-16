@@ -4,7 +4,7 @@ session_start();
 // Check if the user is logged in (you should have authentication in place)
 if (!isset($_SESSION["user_id"])) {
     // Redirect to the login page if the user is not logged in
-    header("Location: login.php");
+    header("Location: ../views/login.html");
     exit();
 }
 
@@ -24,7 +24,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT u.first_name, u.last_name, u.email, u.profession, ud.phone_number, ud.age, ud.location, ud.gender, ud.bio, ud.profile_photo
+$sql = "SELECT u.first_name, u.last_name, u.email, u.profession, ud.age, ud.location, ud.gender, ud.bio, ud.profile_photo
         FROM users u
         LEFT JOIN user_details ud ON u.id = ud.user_id
         WHERE u.id = $user_id";
@@ -39,7 +39,6 @@ if ($result->num_rows > 0) {
     $last_name = $row["last_name"];
     $email = $row["email"];
     $profession = $row["profession"];
-    $phone_number = $row["phone_number"];
     $age = $row["age"];
     $location = $row["location"];
     $gender = $row["gender"];
@@ -80,7 +79,6 @@ $conn->close();
             <?php echo $first_name . ' ' . $age; ?></p>
             <p>Email: <?php echo $email; ?></p>
             <p>Profession: <?php echo $profession; ?></p>
-            <p>Phone Number: <?php echo $phone_number; ?></p>
             <p>Location: <?php echo $location; ?></p>
             <p>Gender: <?php echo $gender; ?></p>
             <p>About me: </br><?php echo $bio; ?></p>

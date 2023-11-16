@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
              //delete the code from the database
 
             //redirect them to the confirmCode page
-            header("Location: ../views/mentors.php"); // Change this to your dashboard page
+            header("Location: ../views/HomePage.html"); // Change this to your dashboard page
             exit();
         } else {
             // Password is incorrect

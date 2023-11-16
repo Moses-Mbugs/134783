@@ -3,7 +3,7 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION["user_id"])) {
-    header("Location: login.php");
+    header("Location: ../views/login.html");
     exit();
 }
 
@@ -52,7 +52,7 @@ $result = $conn->query($query);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="project-card">';
-                echo '<img src="' . $row['image_path'] . '" alt="' . $row['first_name'] . ' ' . $row['last_name'] . '" style="width: 200px; height: 150px;">';
+                echo '<img src="' . $row['image_path'] . '" alt="' . $row['first_name'] . ' ' . $row['last_name'] . '" style="width: 210px; height: 150px;">';
                 echo '<h2>' . $row['title'] . '</h2>';
                 echo '<h3>' . $row['category'] . '</h3>';
                 echo '<p><strong>Start Date:</strong> ' . $row['start_date'] . '</p>';

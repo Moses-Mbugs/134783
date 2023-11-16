@@ -1,5 +1,5 @@
 <?php
-// logout.php
+// php/logout.php
 
 session_start();
 
@@ -10,6 +10,6 @@ $_SESSION = array();
 session_destroy();
 
 // Redirect to the landing page
-header("Location: Landing.html");
+header("Location: ../views/Landing.html");
 exit();
 ?>

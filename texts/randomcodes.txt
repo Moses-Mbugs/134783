@@ -848,3 +848,38 @@ Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         xhr.open("GET", deleteScript, true);
         xhr.send();
     }
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+                                                code for requests
+// Example PHP code to accept a mentorship request
+$requestId = ...; // Get the request ID
+$updateQuery = "UPDATE mentorship_requests SET status = 'accepted' WHERE request_id = ?";
+$stmt = $conn->prepare($updateQuery);
+$stmt->bind_param("i", $requestId);
+
+if ($stmt->execute()) {
+    echo "Mentorship request accepted!";
+} else {
+    echo "Error accepting mentorship request: " . $stmt->error;
+}
+
+$stmt->close();
+
+
+// Example PHP code to accept a mentorship request
+$requestId = ...; // Get the request ID
+$updateQuery = "UPDATE mentorship_requests SET status = 'accepted' WHERE request_id = ?";
+$stmt = $conn->prepare($updateQuery);
+$stmt->bind_param("i", $requestId);
+
+if ($stmt->execute()) {
+    echo "Mentorship request accepted!";
+} else {
+    echo "Error accepting mentorship request: " . $stmt->error;
+}
+
+$stmt->close();
+
