@@ -64,9 +64,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     } else {
         // User details do not exist, insert them
-        $insert_sql = "INSERT INTO user_details (user_id, age, location, gender, bio, profile_photo) VALUES (?, ?, ?, ?, ?, ?)";
+        $insert_sql = "INSERT INTO user_details (user_id, age, location, gender, bio) VALUES (?, ?, ?, ?, ?)";
         $stmt_insert = $conn->prepare($insert_sql);
-        $stmt_insert->bind_param("iisssb", $user_id,  $age, $location, $gender, $bio, $profile_photo);
+        $stmt_insert->bind_param("iisss", $user_id,  $age, $location, $gender, $bio);
 
 
         if ($stmt_insert->execute()) {

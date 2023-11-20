@@ -13,9 +13,10 @@ if ($conn->connect_error) {
 }
 
 // SQL query to retrieve mentor data
-$query = "SELECT first_name, last_name, experience, profession
+$query = "SELECT users.id, users.first_name, users.last_name, users.experience, users.profession, user_details.age, user_details.location, user_details.gender, user_details.bio, user_details.profile_photo
           FROM users
-          WHERE experience = 'mentor'";
+          JOIN user_details ON users.id = user_details.user_id
+          WHERE users.experience = 'mentor'";
 $result = $conn->query($query);
 ?>
 
@@ -27,6 +28,8 @@ $result = $conn->query($query);
     <link rel="stylesheet" type="text/css" href="../css/mentor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Mentors</title>
+
+
 </head>
 <body>
     <div class="navbar">
@@ -46,6 +49,15 @@ $result = $conn->query($query);
                 // might add the image sector
                 echo '<h2>' . $row['first_name'] . ' ' . $row['last_name'] . '</h2>';
                 echo '<p><strong>Expertise:</strong> ' . $row['profession'] . '</p>';
+                // buttons
+                echo '<button class="request-button" onclick="requestMentorship(' . $row['id'] . ')">Request Mentorship</button>';
+                echo '<button class="view-button" onclick="openModal(\'' . $row['first_name'] . ' ' .
+                    $row['last_name'] . '\', \'' .
+                    $row['profile_photo'] . '\', \'' .
+                    $row['age'] . '\', \'' .
+                    $row['location'] . '\', \'' .
+                    $row['gender'] . '\', \'' .
+                    $row['bio'] . '\')">View More</button>';
                 echo '</div>';
             }
         } else {
@@ -53,31 +65,38 @@ $result = $conn->query($query);
         }
         ?>
     </div>
+    <div id="notificationContainer">
+        <div class="notification success" id="successNotification">
+            Mentorship request sent successfully!
+        </div>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
+        <div class="notification error" id="errorNotification">
+            Failed to send mentorship request.
+        </div>
+    </div>
+   
+
+                    
+    
+   <!-- The Modal -->
+   <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <div class="modal-text" id="modalText"></div>
         </div>
     </div>
-
+    <!-- js script for displaying more info -->
     <script>
-        function openModal(mentorId) {
-            // AJAX request to fetch mentor details
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById("modalText").innerHTML = xhr.responseText;
-                    document.getElementById("myModal").style.display = "block";
-                }
-            };
-
-            // Specify the server-side script that handles mentor details retrieval
-            var fetchDetailsScript = 'fetch_mentor_details.php?id=' + mentorId;
-            xhr.open("GET", fetchDetailsScript, true);
-            xhr.send();
+        function openModal(name, image, age, location , gender, bio) {
+            var modalText = '<img src="' + image + '" alt="' + name + '">' +
+                            '<p><strong>FUll name :</strong> ' + name + '</p>' +
+                            '<p><strong>Age:</strong> ' + age + '</p>' +
+                            '<p><strong>Location</strong> ' + location + '</p>' +
+                            '<p><strong>Gender:</strong> ' + gender + '</p>' +
+                            '<p><strong>About </strong> ' + bio + '</p>' + '</br>' + '</br>'+ '</br>'+ '</br>'+ '</br>';
+            document.getElementById("modalText").innerHTML = modalText;
+            document.getElementById("myModal").style.display = "block";
         }
 
         function closeModal() {
@@ -91,7 +110,51 @@ $result = $conn->query($query);
                 closeModal();
             }
         };
+
+    //  request 
+    
+    function requestMentorship(mentorID) {
+        // Send an AJAX request to request_mentorship.php
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Check the response from the server
+                if (xhr.responseText.trim() === 'success') {
+                    console.log('Mentorship request sent successfully');
+                    showNotification();
+                }
+                else {
+                    console.error('Failed to send mentorship request');
+                    showNotification('errorNotification');
+                }
+            }
+        };
+
+        // Specify the server-side script that handles the mentorship request
+        var requestScript = '../scripts/request_mentorship.php';
+        xhr.open("POST", requestScript, true);
+
+        // Set the request header
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        // Send the mentorID as POST data
+        xhr.send("mentor_id=" + mentorID);
+    }
+
+    // the notification
+        function showNotification() {
+            // Display the success notification
+            var notification = document.getElementById('successNotification');
+            notification.style.display = 'block';
+
+            // Optionally, you can add a delay and hide the notification after a few seconds
+            setTimeout(function () {
+                notification.style.display = 'none';
+            }, 500); // 500 milliseconds (0.5 seconds) delay
+        }
+
     </script>
+
 </body>
 </html>
 

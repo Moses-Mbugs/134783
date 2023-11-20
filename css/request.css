@@ -1,0 +1,25 @@
+/* Add this to your existing CSS or create a new CSS file */
+.request-entry {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
