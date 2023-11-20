@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if (!isset($_SESSION["user_id"])) {
     header("Location: ../views/login.html");
     exit();
@@ -8,11 +9,12 @@ if (!isset($_SESSION["user_id"])) {
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve and sanitize user input
-    
     $age = filter_var($_POST["age"], FILTER_SANITIZE_NUMBER_INT);
     $bio = filter_var($_POST["bio"], FILTER_SANITIZE_STRING);
     $location = filter_var($_POST["location"], FILTER_SANITIZE_STRING);
     $gender = filter_var($_POST["gender"], FILTER_SANITIZE_STRING);
+    $linkedin = filter_var($_POST["linkedin"], FILTER_SANITIZE_URL); // Assuming LinkedIn is a URL
+    $github = filter_var($_POST["github"], FILTER_SANITIZE_URL); // Assuming GitHub is a URL
     $user_id = $_SESSION["user_id"];
 
     // Handle profile photo upload (if any)
@@ -51,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($result->num_rows > 0) {
         // User details exist, update them
-        $update_sql = "UPDATE user_details SET  age = ?, location = ?, gender = ?, bio = ?, profile_photo = ? WHERE user_id = ?";
+        $update_sql = "UPDATE user_details SET age = ?, location = ?, gender = ?, bio = ?, linkedin_link = ?, github_link = ?, profile_photo = ? WHERE user_id = ?";
         $stmt_update = $conn->prepare($update_sql);
-        $stmt_update->bind_param("iisssb",$user_id, $age, $location, $gender, $bio, $profile_photo);
+        $stmt_update->bind_param("isssssbi", $age, $location, $gender, $bio, $linkedin, $github, $profile_photo, $user_id);
 
         if ($stmt_update->execute()) {
             // Redirect back to the profile page or display a success message
@@ -64,10 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     } else {
         // User details do not exist, insert them
-        $insert_sql = "INSERT INTO user_details (user_id, age, location, gender, bio) VALUES (?, ?, ?, ?, ?)";
+        $insert_sql = "INSERT INTO user_details (user_id, age, location, gender, bio, linkedin_link, github_link) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt_insert = $conn->prepare($insert_sql);
-        $stmt_insert->bind_param("iisss", $user_id,  $age, $location, $gender, $bio);
-
+        $stmt_insert->bind_param("issssss", $user_id, $age, $location, $gender, $bio, $linkedin, $github);
 
         if ($stmt_insert->execute()) {
             // Redirect back to the profile page or display a success message
@@ -76,9 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             echo "Error inserting user details: " . $conn->error;
         }
-      
-
     }
+
     $stmt_check->close();
     $stmt_update->close();
     $stmt_insert->close();
