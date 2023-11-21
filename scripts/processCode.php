@@ -17,44 +17,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Retrieve user input from the form
-    $code = $_POST["code"]; // Change this to match your form field name
+    $code = $_POST["code"];
     $userId = mysqli_real_escape_string($conn,$_POST["userId"]);
 
-    // Query the database for the user's hashed password
-    $sql = "SELECT * FROM users WHERE id = '$userId'";
+    // Query the database for the user's hashed password, experience, and lastlogin as timestamp
+    $sql = "SELECT *, UNIX_TIMESTAMP(lastlogin) AS lastlogin_timestamp FROM users WHERE id = '$userId'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $DBCode = $row['code'];        
-        // Verify the entered password against the stored hashed password
+        $DBCode = $row['code'];
+        $userExperience = $row['experience'];
 
         //time based
-        $loginTime = $row['lastlogin'];
-        $currentTime = time();
-
-        //compare these two and decide on a cut off 30mins, 10mins etc..
-
-        //if within cutoff continue,
-        //else, show error code expired.
+        $loginTime = $row['lastlogin_timestamp'];
 
         if ($DBCode == $code) {
-            // // Start a session and store user information (e.g., user ID)
-             session_start();
-             $_SESSION["user_id"] = $row["id"];
+            // Start a session and store user information (e.g., user ID)
+            session_start();
+            $_SESSION["user_id"] = $row["id"];
 
-             //delete the code from the database
+            // Redirect based on user experience
+            if ($userExperience == 'mentor') {
+                header("Location: ../views/HomePage.html");
+            } else {
+                header("Location: ../views/dash.html");
+            }
 
-            //redirect them to the confirmCode page
-            header("Location: ../views/HomePage.html"); // Change this to your dashboard page
+            // Delete the code from the database
+
             exit();
         } else {
-            // Password is incorrect
-            $error_message = "Invalid code entered"; 
+            // Code is incorrect
+            $error_message = "Invalid code entered";
         }
     } else {
         // User with the provided userId does not exist
-        $error_message = "User not found"; 
+        $error_message = "User not found";
     }
 
     $conn->close();

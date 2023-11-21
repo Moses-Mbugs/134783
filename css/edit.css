@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background: linear-gradient(110.1deg, rgb(241, 115, 30) 18.9%, rgb(231, 29, 54) 90.7%);
@@ -8,75 +8,80 @@ body {
 h1 {
     text-align: center;
     margin: 20px 0;
+    color: #fff;
 }
 
 form {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 20px auto;
     background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
 
 label {
     display: block;
-    margin: 10px 0;
+    margin: 15px 0;
     font-weight: bold;
 }
 
-textarea {
+textarea, input[type="text"], input[type="file"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    resize: vertical;
+    box-sizing: border-box;
 }
 
 input[type="file"] {
-    width: 100%;
-    margin: 10px 0;
+    margin-top: 10px;
 }
 
 input[type="submit"] {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+
 /* Styles for the navbar */
 .navbar {
     width: 100%;
-    background-color: #555;
+    background-color: #333;
     overflow: auto;
-  }
-  
-  .navbar a {
+}
+
+.navbar a {
     float: left;
     padding: 12px;
     color: white;
     text-decoration: none;
     font-size: 17px;
-  }
-  
-  .navbar a:hover {
+}
+
+.navbar a:hover {
     background-color: #000;
-  }
-  
-  .active {
+}
+
+.active {
     background-color: orange;
-  }
-  
-  @media screen and (max-width: 500px) {
+}
+
+@media screen and (max-width: 500px) {
     .navbar a {
         float: none;
         display: block;
+        text-align: center;
     }
-  }
+}

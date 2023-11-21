@@ -1,94 +1,103 @@
-/* background color */
-
-        /* Navbar */
-        body{
-          z-index: 1;
-          background: linear-gradient(-45deg, red, black, orange, black, green );
-          background-size: 400% 400%;
-          width: 100%;
-          height: 100vh;
-          animation: animate 15s ease infinite;    
-       }
-       @keyframes animate {
-          0% {
-              background-position: 0% 50%;
-          }
-          50% {
-              background-position: 100% 50%;
-          }
-          100% {
-              background-position: 0% 50%;
-          }
-      }
-
-      .navbar {
-          width: 100%;
-          background-color: #555;
-          overflow: auto;
-      }
-      .navbar a {
-          float: left;
-          padding: 12px;
-          color: white;
-          text-decoration: none;
-          font-size: 17px;
-      }
-
-      .navbar a:hover {
-          background-color: #000;
-      }
-
-      .active {
-          background-color: orange;
-          
-      }
-
-      @media screen and (max-width: 500px) {
-      .navbar a {
-          float: none;
-          display: block;
-      }
-      }
-      /* centered content */
-      .centered-content {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: rgba(255, 255, 255, 0.3); 
-          padding: 20px; 
-          border-radius: 10px; 
-          backdrop-filter: blur(10px);
-          width: 800px;
-          height: 480px;
-          }
-      .view-button {
-          background-color: #373535;
-          color: #fff; 
-          border: none;
-          padding: 10px 20px;
-          margin-left: 220px;
-          cursor: pointer; 
-          font-family: ubuntu;
-          border-radius: 40px;
-          top: 75%;
-      }
-      .image{
-          border-radius: 15%;
-      }
-      .text {
-          width:300px;
-          padding:10px;
-          height:150px;
-          float:left;
-          margin:10px;
-          font-size: 17px;
-          color: #fff;
-      }
-      .image {
-          width:325px;
-          padding:10px;
-          height:340px;
-          float:right;
-          margin:10px;
-      }
+body {
+    z-index: 1;
+    background: linear-gradient(-45deg, #ff4500, #ff8c00, #008000, #ff8c00, #ff4500);
+    background-size: 400% 400%;
+    width: 100%;
+    height: 100vh;
+    animation: animate 15s ease infinite;
+  }
+  
+  @keyframes animate {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .navbar {
+    width: 100%;
+    background-color: #333;
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  .active {
+    background-color: #ff8c00;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+  }
+  
+  .centered-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  .view-button {
+    background-color: #373535;
+    color: #fff;
+    border: none;
+    padding: 20px 40px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 40px;
+  }
+  
+  .image {
+    border-radius: 15%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .text {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 17px;
+    color: #fff;
+    text-align: left;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .text {
+      width: 50%;
+      float: left;
+    }
+    .image {
+      width: 50%;
+      float: right;
+    }
+  }
+  

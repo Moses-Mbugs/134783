@@ -150,7 +150,7 @@ $result = $conn->query($query);
             // Optionally, you can add a delay and hide the notification after a few seconds
             setTimeout(function () {
                 notification.style.display = 'none';
-            }, 500); // 500 milliseconds (0.5 seconds) delay
+            }, 3000); // 3000 milliseconds (3 seconds) delay
         }
 
     </script>

@@ -54,6 +54,18 @@ $requests = fetchMentorshipRequests();
     <title>Requests</title>
 </head>
 <body>
+    <!-- navbar -->
+    <div class="navbar">
+        <a href="HomePage.html">Home</a>
+        <a href="addProject.html" ></i></i> Add project </a>
+        <a href="view.php"></i> View projects</a>
+        <a href="myprojects.php"></i> My projects </a>
+        <a href="chat"></i> My mentees </a>
+        <a href="requests.php" class="active"> My requests </a>
+        <a href="profile.php"></i> Profile </a>
+        <a href="logout.html"></i>Log out </a>
+    </div>
+
     <!-- Inside the mentors.php file or any relevant page -->
     <div class="request-entry">
         <table>
