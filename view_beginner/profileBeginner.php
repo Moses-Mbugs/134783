@@ -64,13 +64,13 @@ $conn->close();
 
 <body>
     <div class="navbar">
-        <a href="HomePage.html">Home</a>
-        <a href="addProject.html"> Add project </a>
-        <a href="view.php">View projects</a>
-        <a href="myprojects.php"> My projects </a>
-        <a href="chat"> My mentees </a>
-        <a href="profile.php" class="active"> Profile </a>
-        <a href="logout.html">Log out </a>
+        <a href="home.html">Home</a>
+        <a href="mentor.php">Mentors</a>
+        <a href="viewProjects.php">View projects</a>
+        <a href="accepted_projects.php"> My Projects</a>
+        <a href="chat.php">Chat</a>
+        <a href="profileBeginner.php" class="active">Profile</a>
+        <a href="../views/logout.html">Log out</a>
     </div>
     
     <div class="centered-content">
@@ -88,10 +88,11 @@ $conn->close();
             <p>Github: <?php echo $github_link ;?></p>
         </div>
     </div>
-        <a href="edit.html">
+        <a href="editProfile.html">
             <button class="view-button"> Edit your Info </button>
         </a>
     
 
     
 </body>
+</html>

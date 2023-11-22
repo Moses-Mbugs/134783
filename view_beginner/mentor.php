@@ -33,12 +33,13 @@ $result = $conn->query($query);
 </head>
 <body>
     <div class="navbar">
-        <a href="mentors.php" class="active">Mentors</a>
-        <a href="view.php">View projects</a>
-        <a href="myprojects.php">My projects</a>
+        <a href="home.html">Home</a>
+        <a href="mentor.php" class="active">Mentors</a>
+        <a href="viewProjects.php">View projects</a>
+        <a href="accepted_projects.php"> My Projects</a>
         <a href="chat.php">Chat</a>
-        <a href="profile.php">Profile</a>
-        <a href="logout.html">Log out</a>
+        <a href="profileBeginner.php">Profile</a>
+        <a href="../views/logout.html">Log out</a>
     </div>
 
     <div class="project-cards">
@@ -90,7 +91,7 @@ $result = $conn->query($query);
     <script>
         function openModal(name, image, age, location , gender, bio) {
             var modalText = '<img src="' + image + '" alt="' + name + '">' +
-                            '<p><strong>FUll name :</strong> ' + name + '</p>' +
+                            '<p><strong>Name :</strong> ' + name + '</p>' +
                             '<p><strong>Age:</strong> ' + age + '</p>' +
                             '<p><strong>Location</strong> ' + location + '</p>' +
                             '<p><strong>Gender:</strong> ' + gender + '</p>' +

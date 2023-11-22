@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/edit.css">
+    <title>Edit User Details</title>
+    
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <a href="mentor.php">Mentors</a>
+        <a href="viewProjects.php">View projects</a>
+        <a href="accepted_projects.php"> My Projects</a>
+        <a href="chat.php">Chat</a>
+        <a href="profileBeginner.php" class="active">Profile</a>
+        <a href="../views/logout.html">Log out</a>
+    </div>
+    <h1>Edit Your User Details</h1>
+    <form method="POST" action="../scripts/user_details_beginner.php" enctype="multipart/form-data">
+
+        <!-- Image -->
+        <label for="pic" class="upload-button">Upload Image</label>
+        <input type="file" id="pic" name="pic" accept="image/*">
+
+        <!-- Age -->
+        <label for="age">Age:</label>
+        <input type="text" name="age" id="age" value="">
+
+        <!-- Location -->
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" value="">
+
+        <!-- LinkedIn Link -->
+        <label for="linkedin">LinkedIn Profile:</label>
+        <input type="text" name="linkedin" id="linkedin" placeholder="Enter your LinkedIn profile link">
+
+        <!-- GitHub Link -->
+        <label for="github">GitHub Profile:</label>
+        <input type="text" name="github" id="github" placeholder="Enter your GitHub profile link">
+
+        <!-- Bio -->
+        <label for="bio">Bio:</label>
+        <textarea name="bio" id="bio" rows="4" cols="50" placeholder="Tell us about yourself..."></textarea>
+
+        <!-- Gender -->
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <input type="submit" value="Save Changes">
+    </form>
+</body>
+</html>

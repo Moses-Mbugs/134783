@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($userExperience == 'mentor') {
                 header("Location: ../views/HomePage.html");
             } else {
-                header("Location: ../views/dash.html");
+                header("Location: ../view_beginner/home.html");
             }
 
             // Delete the code from the database

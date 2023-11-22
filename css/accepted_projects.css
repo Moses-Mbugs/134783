@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(110.1deg, rgb(241, 115, 30) 18.9%, rgb(231, 29, 54) 90.7%);
+}
+
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+}
+
+.navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #000;
+}
+
+.project-cards {
+    display: flex;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 20px;
+}
+
+.project-card {
+    max-width: 200px;
+    margin: 20px;
+    background-color: #ffffff16;
+    padding: 20px;
+    border: 1px solid #ccccccc0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+}
+
+.project-card h2, .project-card h3, .project-card p {
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+
+    .project-cards {
+        padding: 10px;
+    }
+
+    .project-card {
+        max-width: 100%;
+    }
+}
+/* Styles for the navbar */
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  .active {
+    background-color: orange;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+  }
+  /* buttons */
+  .project-card button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.project-card button:hover {
+    background-color: #45a049;
+}
