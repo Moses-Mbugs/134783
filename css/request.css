@@ -36,6 +36,7 @@ button {
     background-color: #04AA6D;
     color: white;
 }
+
 .decline-button{
     border-color: #f44336;
     color: red;
@@ -44,6 +45,16 @@ button {
     background: #f44336;
     color: white;
 }
+
+.chat-button{
+    border-color: #04AA6D;
+    color: green;
+}
+.chat-button:hover{
+    background-color: #04AA6D;
+    color: white;
+}
+
 .info {
     border-color: #2196F3;
     color: dodgerblue;
@@ -119,3 +130,16 @@ button {
         display: block;
     }
 }
+/* headings designs */
+h1{
+    font-size: 72px;
+    font-family: "Sofia", sans-serif;
+    text-align: center;
+    color: aliceblue;
+  }
+  h2{
+    text-align: center;
+    font-size: 48px;
+    font-family: "Sofia", sans-serif;
+    color: aliceblue;
+  }

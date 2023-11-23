@@ -35,7 +35,7 @@ $result = $conn->query($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/viewprojects.css">
+    <link rel="stylesheet" type="text/css" href="../css/accepted_projects.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Accepted Projects</title>
 </head>
@@ -45,6 +45,7 @@ $result = $conn->query($query);
         <a href="mentor.php">Mentors</a>
         <a href="viewProjects.php">View projects</a>
         <a href="accepted_projects.php" class="active">Accepted Projects</a>
+        <a href="MyMentors.php">My Mentors </a>
         <a href="chat.php">Chat</a>
         <a href="profileBeginner.php" >Profile</a>
         <a href="../views/logout.html">Log out</a>
@@ -60,6 +61,14 @@ $result = $conn->query($query);
                 echo '<h3>' . $row['category'] . '</h3>';
                 echo '<p><strong>Start Date:</strong> ' . $row['start_date'] . '</p>';
                 echo '<p><strong>End Date:</strong> ' . $row['end_date'] . '</p>';
+                echo '<button class="view-button" onclick="openModal(\'' . $row['first_name'] . ' ' . 
+                    $row['last_name'] . '\', \'' .
+                    $row['image_path'] . '\', \'' . 
+                    $row['title'] . '\', \'' . 
+                    $row['category'] . '\', \'' . 
+                    $row['start_date'] . '\', \'' . 
+                    $row['end_date'] . '\', \'' . 
+                    $row['description'] . '\')">View</button>';
                 echo '<button class="delete-button" onclick="deleteProject(\'' . $row['id'] . '\')">Delete</button>';
                 echo '</div>';
             }
@@ -68,9 +77,53 @@ $result = $conn->query($query);
         }
         ?>
     </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-text" id="modalText"></div>
+        </div>
+    </div>
 
-    <!-- js script for deleting the project -->
     <script>
+        // for viewing more 
+        function openModal(name, image, title, category, startDate, endDate, description) {
+            var modalText = '<img src="' + image + '" alt="' + name + '">' +
+                            '<p><strong>Project by :</strong> ' + name + '</p>' +
+                            '<p><strong>Title:</strong> ' + title + '</p>' +
+                            '<p><strong>Category:</strong> ' + category + '</p>' +
+                            '<p><strong>Start Date:</strong> ' + startDate + '</p>' +
+                            '<p><strong>End Date:</strong> ' + endDate + '</p>' +
+                            '<p><strong>Description:</strong> ' + description + '</p>' + '</br>' + '</br>'+ '</br>'+ '</br>'+ '</br>';
+            document.getElementById("modalText").innerHTML = modalText;
+            document.getElementById("myModal").style.display = "block";
+
+            var acceptButton = document.createElement("button");
+            acceptButton.className = "accept-button";
+            acceptButton.textContent = "Accept Project";
+            acceptButton.onclick = function() {
+                acceptProject(projectId);
+            };
+
+            // Append the accept button to the modal text
+            document.getElementById("modalText").appendChild(acceptButton);
+        }
+        
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // Close the modal if the user clicks outside the modal content
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        };
+        
+        //js script for deleting the project 
         function deleteProject(projectId) {
             // Show a confirmation dialog before deleting the project
             var isConfirmed = confirm("Do you want to delete this project?");

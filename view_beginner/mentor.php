@@ -37,6 +37,7 @@ $result = $conn->query($query);
         <a href="mentor.php" class="active">Mentors</a>
         <a href="viewProjects.php">View projects</a>
         <a href="accepted_projects.php"> My Projects</a>
+        <a href="MyMentors.php">My Mentors </a>
         <a href="chat.php">Chat</a>
         <a href="profileBeginner.php">Profile</a>
         <a href="../views/logout.html">Log out</a>

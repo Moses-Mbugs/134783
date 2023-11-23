@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 09:59 AM
+-- Generation Time: Nov 23, 2023 at 06:50 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `apprentice`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accepted_projects`
+--
+
+CREATE TABLE `accepted_projects` (
+  `acceptance_id` int(11) NOT NULL,
+  `mentee_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `accepted_projects`
+--
+
+INSERT INTO `accepted_projects` (`acceptance_id`, `mentee_id`, `project_id`, `timestamp`, `is_deleted`) VALUES
+(1, 12, 1, '2023-11-22 08:11:40', 1),
+(2, 12, 15, '2023-11-22 08:18:31', 1),
+(3, 12, 4, '2023-11-22 16:30:15', 1),
+(4, 12, 7, '2023-11-22 16:51:54', 1),
+(5, 12, 4, '2023-11-23 03:40:19', 1),
+(6, 12, 8, '2023-11-23 03:43:27', 1),
+(7, 12, 4, '2023-11-23 03:46:56', 0);
 
 -- --------------------------------------------------------
 
@@ -109,7 +136,7 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `experience`, `pr
 (6, 'Kamondia', 'Walter', 'kamondia101@gmail.com', 'beginner', 'Artificial Intelligence', '$2y$10$Kn5Z6ArDtKIBUXBeyQDmmOBy6lFj9NxM/ZTQgxoaeYfD3XRB3NtUm', '2023-10-16 15:28:24', '2023-10-16 17:30:27', 87726),
 (7, 'Moses', 'Mbugua', 'mbuguam323@gmail.com', 'mentor', 'Cyber Security', '$2y$10$nHGchvL215aBcRX5K/nnU.tjTSLQlQVCOvouoS1rWBqo7nbconVWK', '2023-10-17 11:22:03', '2023-11-21 12:00:27', 56671),
 (11, 'Aicha', 'Zindamoyen', 'zindamuoyen2@gmail.com', 'beginner', 'Back end', '$2y$10$qKDEuYkVZAEFEeaeLzDI.eO8ip/jiHYFXHRK5lNg6kLg6XdiEByPa', '2023-10-12 12:12:07', '2023-10-12 14:12:18', 94707),
-(12, 'zion', 'babylon', 'zion@g.com', 'beginner', 'Front end', '$2y$10$V9m3vTVGu5RA9iiRwnhTmewQ59X4iTKHpAB4Ozt58QG6QncwE/g36', '2023-11-19 16:00:45', '2023-11-22 09:33:27', 56739);
+(12, 'zion', 'babylon', 'zion@g.com', 'beginner', 'Front end', '$2y$10$V9m3vTVGu5RA9iiRwnhTmewQ59X4iTKHpAB4Ozt58QG6QncwE/g36', '2023-11-19 16:00:45', '2023-11-22 18:37:50', 35663);
 
 -- --------------------------------------------------------
 
@@ -140,6 +167,12 @@ INSERT INTO `user_details` (`id`, `user_id`, `age`, `location`, `gender`, `bio`,
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `accepted_projects`
+--
+ALTER TABLE `accepted_projects`
+  ADD PRIMARY KEY (`acceptance_id`);
 
 --
 -- Indexes for table `mentorship_requests`
@@ -174,6 +207,12 @@ ALTER TABLE `user_details`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `accepted_projects`
+--
+ALTER TABLE `accepted_projects`
+  MODIFY `acceptance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `mentorship_requests`

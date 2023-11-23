@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2023 at 04:48 PM
+-- Generation Time: Nov 23, 2023 at 07:00 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -36,6 +36,13 @@ CREATE TABLE `mentorship_requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `mentorship_requests`
+--
+
+INSERT INTO `mentorship_requests` (`request_id`, `mentor_id`, `mentee_id`, `status`, `timestamp`) VALUES
+(1, 7, 12, 'declined', '2023-11-20 05:22:53');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -55,7 +62,7 @@ ALTER TABLE `mentorship_requests`
 -- AUTO_INCREMENT for table `mentorship_requests`
 --
 ALTER TABLE `mentorship_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
