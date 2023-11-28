@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 }
 
 // SQL query to retrieve mentorship requests data from the database
-$query = "SELECT users.first_name AS mentee_first_name, users.last_name AS mentee_last_name, mentors.first_name AS mentor_first_name, mentors.last_name AS mentor_last_name, mentorship_requests.status
+$query = "SELECT users.id AS mentee_id, users.first_name AS mentee_first_name, users.last_name AS mentee_last_name, mentors.id AS mentor_id, mentors.first_name AS mentor_first_name, mentors.last_name AS mentor_last_name, mentorship_requests.status
           FROM mentorship_requests
           JOIN users ON mentorship_requests.mentee_id = users.id
           JOIN users AS mentors ON mentorship_requests.mentor_id = mentors.id
@@ -52,43 +52,55 @@ $result = $conn->query($query);
     <a href="../views/logout.html">Log out</a>
 </div>
 
-<div class="mentorship-requests">
-    <h2>My Mentorship Requests</h2>
-    <table>
-        <tr>
-            <th>Mentee Name</th>
-            <th>Mentor Name</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
-        <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '<tr>';
-                echo '<td>' . $row['mentee_first_name'] . ' ' . $row['mentee_last_name'] . '</td>';
-                echo '<td>' . $row['mentor_first_name'] . ' ' . $row['mentor_last_name'] . '</td>';
-                echo '<td>' . $row['status'] . '</td>';
-                echo '<td>';
-                if ($row['status'] == 'accepted') {
-                    echo '<button class="chat-button" onclick="openChat()">Chat</button>';
+    <div class="mentorship-requests">
+        <h2>My Mentorship Requests</h2>
+        <table>
+            <tr>
+                <th>Mentee Name</th>
+                <th>Mentor Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<tr>';
+                    echo '<td>' . $row['mentor_first_name'] . ' ' . $row['mentor_last_name'] . '</td>';
+                    echo '<td>' . $row['status'] . '</td>';
+                    echo '<td>';
+                    if ($row['status'] == 'accepted') {
+                        // Pass the mentor ID to the openChat function
+                        // Output the button with the onclick event
+                        echo '<button class="chat-button" onclick="openChat(' . $row['mentor_id'] . ', 
+                        \'' . $row['status'] . '\')">Chat</button>';
+                    }
+                    echo '</td>';
+                    echo '</tr>';
                 }
-                echo '</td>';
-                echo '</tr>';
+            } else {
+                echo '<tr><td colspan="4">No mentorship requests found.</td></tr>';
             }
+            ?>
+        </table>
+    </div>
+    <!-- JavaScript function for opening the chat -->
+    <script>
+    function openChat(mentorId, status) {
+        // Check if the mentor has accepted the request
+        if (status === 'accepted') {
+            // Redirect to chat.php with the valid mentorId
+            window.location.href = "../view_beginner/chat.php?mentor_id=" + mentorId;
         } else {
-            echo '<tr><td colspan="4">No mentorship requests found.</td></tr>';
+            // Handle the case when the mentor has not accepted the request
+            console.log("Mentor has not accepted the request.");
         }
-        ?>
-    </table>
-</div>
-
-<!-- JavaScript function for opening the chat -->
-<script>
-    function openChat() {
-        // Implement your chat opening logic here
-        alert("Chat functionality not implemented yet.");
     }
-</script>
+    </script>
+
+
+
+
+    
 
 </body>
 </html>
