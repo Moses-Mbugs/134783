@@ -50,6 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Code is incorrect
             $error_message = "Invalid code entered";
+            echo '<script>';
+            echo 'alert("Invalid code entered");';
+            echo 'window.location.href = "../views/confirmCode.php";';
+            echo '</script>';
+            exit(); 
         }
     } else {
         // User with the provided userId does not exist

@@ -1,95 +1,29 @@
-/* styles.css */
-
-/* General styling */
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  color: white;
-}
-
-/* Navbar styling (adjust as needed) */
-.navbar {
-  background-color: #FFA500; /* Orange color */
-  /* ... (other styles) ... */
-}
-
-/* Chat container styling */
+/* Add this CSS to your existing styles */
 .chat-container {
-  display: flex;
-  height: 100vh;
-}
-
-/* Mentors section styling */
-.mentors-section {
-  width: 33%;
-  background-color: #1a1a1a; /* Dark gray color */
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.previous-mentors {
-  font-size: 18px;
-  color: #FFA500; /* Orange color */
-}
-
-/* Chat section styling */
-.chat-section {
-  width: 67%;
-  display: flex;
-  flex-direction: column;
-  background-color: black;
-}
-
-.chat-header {
-  background-color: #1a1a1a; /* Dark gray color */
-  padding: 20px;
-  text-align: center;
-  box-sizing: border-box;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.chat-input {
-  background-color: #1a1a1a; /* Dark gray color */
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-textarea {
-  width: calc(100% - 10px);
+  border: 1px solid #ccc;
   padding: 10px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.message-input-container {
+  margin-top: 10px;
+}
+
+#messageInput {
+  width: 80%;
+  padding: 5px;
 }
 
 button {
-  background-color: #FFA500; /* Orange color */
-  color: black;
-  padding: 10px;
-  border: none;
+  padding: 5px;
   cursor: pointer;
 }
-
-/* Chat message styling */
-.chat-message {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.sender-name {
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-
 
 /* Styles for the navbar */
 .navbar {

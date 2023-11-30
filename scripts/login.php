@@ -58,10 +58,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Password is incorrect
             $error_message = "Invalid username or password"; 
+            echo '<script>';
+            echo 'alert("Wrong password");';
+            echo 'window.location.href = "../views/login.html";';
+            echo '</script>';
+            exit(); 
         }
     } else {
         // User with the provided email does not exist
         $error_message = "User not found"; 
+        echo '<script>';
+        echo 'alert("User does not exist try again");';
+        echo 'window.location.href = "../views/login.html";';
+        echo '</script>';
+        exit(); 
+
     }
 
     $conn->close();

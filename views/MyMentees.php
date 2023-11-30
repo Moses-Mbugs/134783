@@ -89,7 +89,7 @@ $result = $conn->query($query);
         // Check if the mentee has accepted the request
         if (status === 'accepted') {
             // Redirect to chat.php with the valid menteeId
-            window.location.href = "../view_mentor/chat.php?mentee_id=" + menteeId;
+            window.location.href = "../views/chatMentee.php?mentee_id=" + menteeId;
         } else {
             // Handle the case when the mentee has not accepted the request
             console.log("Mentee has not accepted the request.");
