@@ -56,10 +56,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $end_date = $_POST["end_date"];
     $description = filter_var($_POST["description"], FILTER_SANITIZE_STRING);
 
+    
     // Update the project in the database
-    $update_sql = "UPDATE projects SET title = ?, category = ?, start_date = ?, end_date = ?, description = ? WHERE id = ? AND user_id = ?";
-    $stmt = $conn->prepare($update_sql);
-    $stmt->bind_param("sssssi", $title, $category, $start_date, $end_date, $description, $projectID, $user_id);
+        $update_sql = "UPDATE projects SET title = ?, category = ?, start_date = ?, end_date = ?, description = ? WHERE id = ?";
+        $stmt = $conn->prepare($update_sql);
+        $stmt->bind_param("sssssi", $title, $category, $start_date, $end_date, $description, $projectID);
+
 
     if ($stmt->execute()) {
         // Redirect back to the projects page or display a success message
@@ -85,13 +87,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
     <div class="navbar">
-        <a href="mentors.php">Home</a>
-        <a href="addProject.html"> Add project </a>
-        <a href="view.php">View projects</a>
-        <a href="myprojects.php" class="active"> My projects </a>
-        <a href="chat"> My mentees </a>
-        <a href="profile.php"> Profile </a>
-        <a href="logout.html">Log out </a>
+        <a href="HomePage.html">Home</a>
+        <a href="addProject.html" ></i></i> Add project </a>
+        <a href="view.php"></i> View projects</a>
+        <a href="myprojects.php" class="active"></i> My projects </a>
+        <a href="requests.php"></i> My requests </a>
+        <a href="profile.php"></i> Profile </a>
+        <a href="logout.html"></i>Log out </a>
+    
     </div>
 
     <div class="container">

@@ -67,6 +67,19 @@ body {
 }
 
 /* buttons */
+.edit-button{
+    background-color: rgb(0, 255, 242); /* Orange button background */
+    color: #000; /* Black button text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+.edit-button:hover {
+    background-color: rgb(0, 255, 110); /* Lighter orange on hover */
+}
+
 .delete-button {
     background-color: #FFA500; /* Orange button background */
     color: #000; /* Black button text color */

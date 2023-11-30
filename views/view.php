@@ -23,7 +23,8 @@ if ($conn->connect_error) {
 // SQL query to retrieve project data from the database
 $query = "SELECT users.first_name, users.last_name, projects.image_path, projects.title, projects.category, projects.start_date, projects.end_date, projects.description
           FROM projects
-          JOIN users ON projects.user_id = users.id";
+          JOIN users ON projects.user_id = users.id
+          WHERE projects.is_deleted = 0";
 $result = $conn->query($query);
 ?>
 
@@ -42,7 +43,7 @@ $result = $conn->query($query);
         <a href="addProject.html"> Add project </a>
         <a href="view.php" class="active">View projects</a>
         <a href="myprojects.php"> My projects </a>
-        <a href="chat"> My mentees </a>
+        <a href="requests.php"> My request </a>
         <a href="profile.php" > Profile </a>
         <a href="logout.html">Log out </a>
     </div>

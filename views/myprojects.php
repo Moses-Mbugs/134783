@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 $user_id = $_SESSION["user_id"];
 
 // SQL query to retrieve projects for the logged-in user
-$query = "SELECT id, title, category, start_date, end_date, description FROM projects WHERE user_id = ?";
+$query = "SELECT id, title, category, start_date, end_date, description FROM projects WHERE user_id = ? AND is_deleted = 0";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -43,12 +43,13 @@ $result = $stmt->get_result();
 <body>
     <div class="navbar">
         <a href="HomePage.html">Home</a>
-        <a href="addProject.html"> Add project </a>
-        <a href="view.php">View projects</a>
-        <a href="myprojects.php" class="active"> My projects </a>
-        <a href="chat"> My mentees </a>
-        <a href="profile.php"> Profile </a>
-        <a href="logout.html">Log out </a>
+        <a href="addProject.html" ></i></i> Add project </a>
+        <a href="view.php"></i> View projects</a>
+        <a href="myprojects.php" class="active"></i> My projects </a>
+        <a href="requests.php"></i> My requests </a>
+        <a href="profile.php"></i> Profile </a>
+        <a href="logout.html"></i>Log out </a>
+    
     </div>
 
     <div class="project-cards">
@@ -91,6 +92,9 @@ $result = $stmt->get_result();
             // Get the projectID from the modal dataset
             var projectID = document.getElementById("deleteConfirmation").dataset.projectId;
 
+            // Log the deleteScript variable
+            console.log('Delete Script:', '../scripts/deleteProjectMentor.php?id=' + projectID);
+
             // Send an AJAX request to delete the project
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
@@ -98,11 +102,12 @@ $result = $stmt->get_result();
                     // Check the response from the server
                     if (xhr.responseText.trim() === 'success') {
                         console.log('Project deleted successfully');
-                        // Optionally, you can update the UI or perform additional actions here
-                        // For example, you might want to remove the deleted project card from the UI
                         document.getElementById('project-' + projectID).remove();
                     } else {
                         console.error('Failed to delete project');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 500);
                     }
                     // Close the delete confirmation modal
                     document.getElementById("deleteConfirmation").style.display = "none";
@@ -110,10 +115,11 @@ $result = $stmt->get_result();
             };
 
             // Specify the server-side script that handles the deletion
-            var deleteScript = 'deleteproject.php?id=' + projectID;
+            var deleteScript = '../scripts/deleteProjectMentor.php?id=' + projectID;
             xhr.open("GET", deleteScript, true);
             xhr.send();
         }
+
 
         function cancelDelete() {
             document.getElementById("deleteConfirmation").style.display = "none";

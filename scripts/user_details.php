@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // User details exist, update them
         $update_sql = "UPDATE user_details SET age = ?, location = ?, gender = ?, bio = ?, linkedin_link = ?, github_link = ?, profile_photo = ? WHERE user_id = ?";
         $stmt_update = $conn->prepare($update_sql);
-        $stmt_update->bind_param("isssssbi", $age, $location, $gender, $bio, $linkedin, $github, $profile_photo, $user_id);
+        $stmt_update->bind_param("issssssi", $age, $location, $gender, $bio, $linkedin, $github, $profile_photo, $user_id);
 
         if ($stmt_update->execute()) {
             // Redirect back to the profile page or display a success message
@@ -66,9 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     } else {
         // User details do not exist, insert them
-        $insert_sql = "INSERT INTO user_details (user_id, age, location, gender, bio, linkedin_link, github_link) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $insert_sql = "INSERT INTO user_details (user_id, age, location, gender, bio, linkedin_link, github_link, profile_photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt_insert = $conn->prepare($insert_sql);
-        $stmt_insert->bind_param("issssss", $user_id, $age, $location, $gender, $bio, $linkedin, $github);
+        $stmt_insert->bind_param("iissssss", $user_id, $age, $location, $gender, $bio, $linkedin, $github, $profile_photo );
 
         if ($stmt_insert->execute()) {
             // Redirect back to the profile page or display a success message

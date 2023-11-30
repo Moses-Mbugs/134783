@@ -23,7 +23,9 @@ if ($conn->connect_error) {
 // SQL query to retrieve project data from the database
 $query = "SELECT users.first_name, users.last_name, projects.id, projects.image_path, projects.title, projects.category, projects.start_date, projects.end_date, projects.description
           FROM projects
-          JOIN users ON projects.user_id = users.id";
+          JOIN users ON projects.user_id = users.id
+          WHERE projects.is_deleted = 0";
+
 $result = $conn->query($query);
 ?>
 
